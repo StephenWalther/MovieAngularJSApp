@@ -1,0 +1,1 @@
+console.log("Hello from ScriptA!"),console.log("hello from ScriptB!");

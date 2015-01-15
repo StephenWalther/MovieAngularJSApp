@@ -1,0 +1,27 @@
+﻿<div>
+
+    <h1 class="monkey">List Movies</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Director</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movie in movies">
+                <td>
+                    <a href="/movies/edit/{{movie.Id}}" class="btn btn-default btn-xs">edit</a>
+                    <a href="/movies/delete/{{movie.Id}}" class="btn btn-danger btn-xs">delete</a>
+                </td>
+                <td>{{movie.Title}}</td>
+                <td>{{movie.Director}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <a href="/movies/add" class="btn btn-primary">Add New Movie</a>
+    </p>
+</div>
