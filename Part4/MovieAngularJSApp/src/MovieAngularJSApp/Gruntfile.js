@@ -1,6 +1,4 @@
-﻿
 module.exports = function (grunt) {
-
     // load Grunt plugins from NPM
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -8,6 +6,11 @@ module.exports = function (grunt) {
     // configure plugins
     grunt.initConfig({
         uglify: {
+            options: {
+                compress: {
+                    drop_debugger: false
+                }
+            },
             my_target: {
                 files: { 'wwwroot/app.js': ['Scripts/app.js', 'Scripts/**/*.js'] }
             }
@@ -23,5 +26,4 @@ module.exports = function (grunt) {
 
     // define tasks
     grunt.registerTask('default', ['uglify', 'watch']);
-
 };

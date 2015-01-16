@@ -5,16 +5,18 @@
         "wwwroot"
     ],
     "packExclude": [
+        "node_modules",
+        "bower_components",
         "**.kproj",
         "**.user",
         "**.vspscc"
     ],
     "dependencies": {
-        "Microsoft.AspNet.Server.IIS": "1.0.0-beta1",
-        "Microsoft.AspNet.Mvc": "6.0.0-beta1"
+		"Microsoft.AspNet.Server.IIS": "1.0.0-*",
+        "Microsoft.AspNet.Mvc": "6.0.0-*"
     },
     "frameworks" : {
         "aspnet50" : { },
-        "aspnetcore50": { }
+        "aspnetcore50" : { }
     }
 }

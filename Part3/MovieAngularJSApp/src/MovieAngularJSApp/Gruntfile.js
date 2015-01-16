@@ -1,4 +1,4 @@
-/// <binding ProjectOpened='default' />
+/// <binding AfterBuild='uglify:my_target' />
 module.exports = function (grunt) {
     // load Grunt plugins from NPM
     grunt.loadNpmTasks('grunt-contrib-uglify');
