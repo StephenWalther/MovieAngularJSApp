@@ -8,39 +8,48 @@
         .controller('MoviesEditController', MoviesEditController)
         .controller('MoviesDeleteController', MoviesDeleteController);
 
-    /* Movies List Controller */
-    MoviesListController.$inject = ['$scope', 'Movies'];
+    /* Movies List Controller  */
+    MoviesListController.$inject = ['$scope', 'Movie'];
 
-    function MoviesListController($scope, Movies) {
-        $scope.movies = Movies.query();
+    function MoviesListController($scope, Movie) {
+        $scope.movies = Movie.query();
     }
 
     /* Movies Create Controller */
-    MoviesAddController.$inject = ['$scope', 'Movies'];
+    MoviesAddController.$inject = ['$scope', '$location', 'Movie'];
 
-    function MoviesAddController($scope, Movies) {
-        $scope.movies = Movies.query();
-    }
-
-    /* Movies Edit Controller */
-    MoviesEditController.$inject = ['$scope', '$routeParams', 'Movies'];
-
-    function MoviesEditController($scope, $routeParams, Movies) {
-        $scope.movie = Movies.get({ id: $routeParams.id });
-        $scope.edit = function () {
-            $scope.movie.$update(function () {
-                debugger;
+    function MoviesAddController($scope, $location, Movie) {
+        $scope.movie = new Movie();
+        $scope.add = function () {
+            $scope.movie.$save(function () {
+                $location.path('/');
             });
         };
     }
 
-    /* Movies Delete Controller */
-    MoviesDeleteController.$inject = ['$scope', 'Movies'];
+    /* Movies Edit Controller */ 
+    MoviesEditController.$inject = ['$scope', '$routeParams', '$location', 'Movie'];
 
-    function MoviesDeleteController($scope, Movies) {
-        $scope.movies = Movies.query();
+    function MoviesEditController($scope, $routeParams, $location, Movie) {
+        $scope.movie = Movie.get({ id: $routeParams.id });
+        $scope.edit = function () {
+            $scope.movie.$save(function () {
+                $location.path('/');
+            });
+        };
     }
 
+    /* Movies Delete Controller  */
+    MoviesDeleteController.$inject = ['$scope', '$routeParams', '$location', 'Movie'];
 
+    function MoviesDeleteController($scope, $routeParams, $location, Movie) {
+        $scope.movie = Movie.get({ id: $routeParams.id });
+        $scope.remove = function () {
+            $scope.movie.$remove({id:$scope.movie.Id}, function () {
+                $location.path('/');
+            });
+        };
+    }
 
+    
 })();

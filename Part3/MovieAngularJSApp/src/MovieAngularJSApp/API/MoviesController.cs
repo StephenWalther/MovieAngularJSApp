@@ -5,6 +5,7 @@ using Microsoft.AspNet.Mvc;
 using MovieAngularJSApp.Models;
 
 
+
 namespace MovieAngularJSApp.API.Controllers
 {
     [Route("api/[controller]")]
@@ -21,18 +22,30 @@ namespace MovieAngularJSApp.API.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public Movie Get(int id)
+        [HttpGet("{id:int}")]
+        public IActionResult Get(int id)
         {
-            return new Movie
+            return new ObjectResult(new Movie
             {
                 Id=1,
                 Title="Star Wars",
                 Director="Lucas"
-            };
+            });
         }
 
 
+        [HttpPost]
+        public IActionResult Post([FromBody]Movie movie)
+        {
+            return new ObjectResult(movie);
+        }
+
+
+        [HttpDelete("{id:int}")]
+        public IActionResult Delete(int id)
+        {
+            return new HttpStatusCodeResult(200);
+        }
 
 
     }

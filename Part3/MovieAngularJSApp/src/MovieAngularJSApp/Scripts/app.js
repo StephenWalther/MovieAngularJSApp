@@ -1,7 +1,7 @@
 ﻿(function () {
-    'use strict';
+    'use strict'; 
 
-    config.$inject = ['$routeProvider', '$locationProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider']; 
 
     angular.module('moviesApp', [
         'ngRoute', 'moviesServices'
@@ -26,7 +26,7 @@
                 controller: 'MoviesDeleteController'
             });
 
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true); 
     }
 
 })();

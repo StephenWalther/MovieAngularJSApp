@@ -3,15 +3,13 @@
 
     angular
         .module('moviesServices', ['ngResource'])
-        .factory('Movies', Movies);
+        .factory('Movie', Movie);
 
-    Movies.$inject = ['$resource'];
+    Movie.$inject = ['$resource'];
 
-    function Movies($resource) {
-        return $resource('/api/movies/:id', { id: '@_id' }, {
-            update: {
-                method: 'PUT'
-            }
-        });
+    function Movie($resource) {
+        return $resource('/api/movies/:id');
     }
+
+
 })();

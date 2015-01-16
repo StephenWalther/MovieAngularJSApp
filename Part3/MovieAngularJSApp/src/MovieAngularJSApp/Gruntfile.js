@@ -1,4 +1,4 @@
-﻿
+/// <binding ProjectOpened='default' />
 module.exports = function (grunt) {
     // load Grunt plugins from NPM
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -7,6 +7,11 @@ module.exports = function (grunt) {
     // configure plugins
     grunt.initConfig({
         uglify: {
+            options: {
+                compress: {
+                    drop_debugger: false
+                }
+            },
             my_target: {
                 files: { 'wwwroot/app.js': ['Scripts/app.js', 'Scripts/**/*.js'] }
             }
