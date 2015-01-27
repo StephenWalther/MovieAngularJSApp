@@ -1,0 +1,51 @@
+﻿
+<div class="bg-danger validationErrors" ng-show="validationErrors">
+	<ul>
+		<li ng-repeat="error in validationErrors">{{error}}</li>
+	</ul>
+</div> 
+
+<div class="form-group">
+	<label for="Title">Movie Title</label>
+	<input name="Title"
+		   type="text"
+		   class="form-control"
+		   placeholder="Enter title"
+		   ng-model="movie.Title"
+		   ng-required="true"
+		   ng-minlength="3" />
+</div>
+<div class="form-group">
+	<label for="Director">Director</label>
+	<input name="Director" 
+		   type="text" 
+		   class="form-control" 
+		   placeholder="Enter director" 
+		   ng-model="movie.Director"
+		   ng-required="true" />
+</div>
+<div class="form-group">
+	<label for="TicketPrice">Ticket Price</label>
+	<input name="TicketPrice" 
+		   type="text" 
+		   class="form-control" 
+		   placeholder="Enter ticket price" 
+		   ng-model="movie.TicketPrice">
+</div>
+<div class="form-group">
+	<label for="Release">Release Date</label>
+	<p class="input-group" ng-controller="DatePickerController">
+		<input type="text" 
+			   class="form-control" 
+			   datepicker-popup 
+			   ng-model="movie.ReleaseDate" 
+			   is-open="opened" />	
+		<span class="input-group-btn">
+			<button type="button"
+					class="btn btn-default"
+					ng-click="open($event)">
+				<i class="glyphicon glyphicon-calendar"></i>
+			</button>
+		</span>
+	</p>
+</div>
