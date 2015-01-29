@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Mvc;
 using MovieAngularJSApp.Models;
-
+using System.Security.Claims;
 
 namespace MovieAngularJSApp.API.Controllers
 {
@@ -37,6 +37,7 @@ namespace MovieAngularJSApp.API.Controllers
 
 
         [HttpPost]
+		[Authorize("CanEdit", "true")]
         public IActionResult Post([FromBody]Movie movie)
         {
 			if (ModelState.IsValid)
@@ -58,11 +59,14 @@ namespace MovieAngularJSApp.API.Controllers
 					return new ObjectResult(original);
 				}
 			}
-			return new BadRequestObjectResult(ModelState);
-			
+
+			// This will work in later versions of ASP.NET 5
+			//return new BadRequestObjectResult(ModelState);
+			return null;
 		}
 
 
+		[Authorize("CanEdit", "true")]
 		[HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {

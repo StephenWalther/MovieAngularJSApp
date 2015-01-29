@@ -24,7 +24,8 @@
             .when('/movies/delete/:id', {
                 templateUrl: '/Views/delete.html',
                 controller: 'MoviesDeleteController'
-            });
+            })
+			.otherwise({ redirectTo: '/' });
 
         $locationProvider.html5Mode(true); 
     }

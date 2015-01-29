@@ -9,12 +9,14 @@
         .controller('MoviesDeleteController', MoviesDeleteController)
         .controller('DatePickerController', DatePickerController);
 
-    /* Movies List Controller  */
-    MoviesListController.$inject = ['$scope', 'Movie'];
+	/* Movies List Controller  */
+	MoviesListController.$inject = ['$scope', 'Movie', 'canEdit'];
 
-    function MoviesListController($scope, Movie) {
-        $scope.movies = Movie.query();
-    }
+	function MoviesListController($scope, Movie, canEdit) {
+		$scope.canEdit = canEdit;
+		$scope.movies = Movie.query();
+	}
+
 
     /* Movies Create Controller */
     MoviesAddController.$inject = ['$scope', '$location', 'Movie'];

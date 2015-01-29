@@ -1,12 +1,14 @@
-﻿using Microsoft.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Data.Entity;
 using System;
 
 namespace MovieAngularJSApp.Models
 {
-    public class MoviesAppContext:DbContext
+	public class ApplicationUser : IdentityUser {}
+
+    public class MoviesAppContext : IdentityDbContext<ApplicationUser>
     {
-
 		public DbSet<Movie> Movies { get; set; }
-
 	}
 }
