@@ -37,13 +37,8 @@ namespace MovieAngularJSApp
             if (usingMono)
             {
                 services.AddEntityFramework(Configuration)
-                        .AddSQLite()
+                        .AddInMemoryStore()
                         .AddDbContext<MoviesAppContext>();
-
-
-                // services.AddEntityFramework(Configuration)
-                //         .AddInMemoryStore()
-                //         .AddDbContext<MoviesAppContext>();
             } else {
 				services.AddEntityFramework(Configuration)
 						.AddSqlServer()
